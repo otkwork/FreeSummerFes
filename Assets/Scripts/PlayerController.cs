@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 	
 	Vector3 m_direction;
 	Vector3 m_velocity;
-	//Animator m_animator;
+	Animator m_animator;
 	PlayerInput m_playerInput;
 	CharacterController m_charaCon;
 
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		m_playerInput = GetComponent<PlayerInput>();
-		//m_animator = GetComponent<Animator>();
+		m_animator = GetComponent<Animator>();
 		m_charaCon = GetComponent<CharacterController>();
 	}
 
@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour
 	{
 		var value = callback.ReadValue<Vector2>();
 		m_direction = new Vector3(value.x, 0, value.y);
-		///m_animator.SetBool("Move", true);
+		m_animator.SetBool("Move", true);
 	}
 
 	void OnMoveCancel(InputAction.CallbackContext callback)
 	{
 		m_direction = Vector3.zero;
-		//m_animator.SetBool("Move", false);
+		m_animator.SetBool("Move", false);
 	}
 
 	// アニメーションから呼ばれる
@@ -73,7 +73,15 @@ public class PlayerController : MonoBehaviour
 	{
 		// カメラの正面ベクトルを作成
 		Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-		transform.forward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1));
+
+		// 進行方向にゆっくり向く
+		if (m_direction != Vector3.zero)
+		{
+			// Y軸以外は固定する
+			transform.rotation = Quaternion.Slerp(transform.rotation,
+				Quaternion.LookRotation(m_velocity.normalized), 0.3f);
+			transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+		}
 
 		if (m_canDirection)
 		{
@@ -81,6 +89,9 @@ public class PlayerController : MonoBehaviour
 			m_velocity = cameraForward * m_direction.z + Camera.main.transform.right * m_direction.x;
 			m_velocity *= m_speed * Time.deltaTime;
 		}
+
+		// 重力をかける
+		m_velocity.y += Physics.gravity.y * Time.deltaTime;
 
 		// 移動
 		if (m_canMove)
