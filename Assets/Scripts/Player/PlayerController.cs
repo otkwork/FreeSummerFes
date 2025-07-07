@@ -39,12 +39,14 @@ public class PlayerController : MonoBehaviour
 	{
 		m_playerInput.actions["Move"].performed += OnMove;
 		m_playerInput.actions["Move"].canceled += OnMoveCancel;
+		m_playerInput.actions["Direct"].performed += OnDirect;
 	}
 
 	private void OnDisable()
 	{
 		m_playerInput.actions["Move"].performed -= OnMove;
 		m_playerInput.actions["Move"].canceled -= OnMoveCancel;
+		m_playerInput.actions["Direct"].performed -= OnDirect;
 	}
 
 	private void OnMove(InputAction.CallbackContext callback)
@@ -58,6 +60,15 @@ public class PlayerController : MonoBehaviour
 	{
 		m_direction = Vector3.zero;
 		m_animator.SetBool("Move", false);
+	}
+
+	void OnDirect(InputAction.CallbackContext callback)
+	{
+		// 屋台を見ているとき
+		if (PlayerRay.lookStall)
+		{
+			Debug.Log("!!");
+		}
 	}
 
 	// アニメーションから呼ばれる
