@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 		// ‰®‘ä‚ðŒ©‚Ä‚¢‚é‚Æ‚«
 		if (PlayerRay.lookStall)
 		{
-			Debug.Log("!!");
+			Debug.Log("Ž‹“_ˆÚ“®");
 		}
 	}
 
