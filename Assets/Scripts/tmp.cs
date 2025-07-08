@@ -1,22 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class tmp : MonoBehaviour
 {
-	[SerializeField] GameObject a;
-    // Start is called before the first frame update
+    private static CinemachineVirtualCamera m_camera;
+
+    // ÉJÉÅÉâÇÃóDêÊìx
+    private static readonly int ShootingCameraNum = 20;
+    private static readonly int MoveingCameraNum = 5;
+
     void Start()
     {
-        
+        m_camera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void ShootingCamera()
     {
-        if (Input.GetMouseButtonDown(0))
-		{
-			a.SetActive(!a.activeSelf);
-		}
+        m_camera.Priority = ShootingCameraNum;
+    }
+
+    public static void MoveingCamera()
+    {
+        m_camera.Priority  = MoveingCameraNum;
     }
 }

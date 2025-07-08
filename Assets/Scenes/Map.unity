@@ -6987,7 +6987,6 @@ GameObject:
   m_Component:
   - component: {fileID: 359001452}
   - component: {fileID: 359001456}
-  - component: {fileID: 359001455}
   - component: {fileID: 359001454}
   - component: {fileID: 359001453}
   m_Layer: 0
@@ -7090,14 +7089,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &359001455
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359001451}
-  m_Enabled: 1
 --- !u!20 &359001456
 Camera:
   m_ObjectHideFlags: 0
@@ -9978,13 +9969,14 @@ GameObject:
   - component: {fileID: 552986226}
   - component: {fileID: 552986224}
   - component: {fileID: 552986227}
+  - component: {fileID: 552986228}
   m_Layer: 0
-  m_Name: Cinemachine (1)
+  m_Name: ShootingCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &552986224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10037,7 +10029,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1481936329}
   m_Follow: {fileID: 747035852}
@@ -10060,6 +10052,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 34297079}
+--- !u!114 &552986228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552986223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba53d8ac5e5765e4f9153ccf6dfbf388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &553984292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4144939046933883186, guid: af90fe2f0f252bf4b8c2ab79bcd41edf,
@@ -25809,7 +25813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570838731}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18345283, y: 0.48556936, z: -0.10501426, w: 0.8482568}
+  m_LocalRotation: {x: 0.18345281, y: 0.48556933, z: -0.105014265, w: 0.8482567}
   m_LocalPosition: {x: -8.000001, y: 2.5, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31416,51 +31420,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21aff866aeba52a4c80fbae6bf6eb8af, type: 3}
---- !u!1 &1849982537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1849982539}
-  - component: {fileID: 1849982538}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1849982538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849982537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba53d8ac5e5765e4f9153ccf6dfbf388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  a: {fileID: 552986223}
---- !u!4 &1849982539
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849982537}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7, y: 0.192, z: 9.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1850364475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1508454761942618995, guid: 21aff866aeba52a4c80fbae6bf6eb8af,
@@ -32243,7 +32202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883571424}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19881126, y: 0.48358434, z: -0.11380593, w: 0.8447891}
+  m_LocalRotation: {x: 0.19881125, y: 0.48358434, z: -0.113805935, w: 0.8447891}
   m_LocalPosition: {x: -8.000001, y: 2.5, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37795,4 +37754,3 @@ SceneRoots:
   - {fileID: 1151236490}
   - {fileID: 807641732}
   - {fileID: 782549013}
-  - {fileID: 1849982539}

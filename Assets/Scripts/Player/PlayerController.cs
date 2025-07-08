@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,15 +11,18 @@ public class PlayerController : MonoBehaviour
 	
 	Vector3 m_direction;
 	Vector3 m_velocity;
+	GameObject m_model;
 	Animator m_animator;
 	PlayerInput m_playerInput;
 	CharacterController m_charaCon;
 
 	bool m_canMove;
 	bool m_canDirection;
+    static bool m_isShooting;
 
 	private void Awake()
 	{
+		m_model = transform.GetChild(0).gameObject;
 		m_playerInput = GetComponent<PlayerInput>();
 		m_animator = GetComponent<Animator>();
 		m_charaCon = GetComponent<CharacterController>();
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
 		m_velocity = new Vector3(0, 0, 0);
 		m_canMove = true;
 		m_canDirection = true;
+		m_isShooting = false;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -65,9 +70,15 @@ public class PlayerController : MonoBehaviour
 	void OnDirect(InputAction.CallbackContext callback)
 	{
 		// 屋台を見ているとき
-		if (PlayerRay.lookStall)
+		if (PlayerRay.lookStall && !m_isShooting)
 		{
-			Debug.Log("視点移動");
+			m_isShooting = true;
+			tmp.ShootingCamera();
+		}
+		else if (m_isShooting)
+		{
+			m_isShooting = false;
+			tmp.MoveingCamera();
 		}
 	}
 
@@ -82,6 +93,18 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		// 射的中は移動を制限
+		if (m_isShooting)
+		{
+			// モデルの非表示
+			m_model.SetActive(false);
+			return;
+		}
+		else
+		{
+			m_model.SetActive(true);
+		}
+
 		// カメラの正面ベクトルを作成
 		Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
@@ -109,5 +132,10 @@ public class PlayerController : MonoBehaviour
 		{
 			m_charaCon.Move(m_velocity);
 		}
+	}
+
+	public static bool isShooting
+	{
+		get { return m_isShooting; }
 	}
 }

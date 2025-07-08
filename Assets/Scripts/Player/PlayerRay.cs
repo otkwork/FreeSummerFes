@@ -15,6 +15,13 @@ public class PlayerRay : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		// ŽË“I’†‚È‚çreturn
+		if (PlayerController.isShooting)
+		{
+			m_lookStall = false;
+			return;
+		}
+
 		RaycastHit hit;
 		// ƒŒƒC‚ð”ò‚Î‚·
 		if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
