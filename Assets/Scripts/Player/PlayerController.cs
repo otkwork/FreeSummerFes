@@ -73,12 +73,7 @@ public class PlayerController : MonoBehaviour
 		if (PlayerRay.lookStall && !m_isShooting)
 		{
 			m_isShooting = true;
-			tmp.ShootingCamera();
-		}
-		else if (m_isShooting)
-		{
-			m_isShooting = false;
-			tmp.MoveingCamera();
+			ChangeCamera.ShootingCamera();
 		}
 	}
 
@@ -89,6 +84,17 @@ public class PlayerController : MonoBehaviour
 		m_canDirection = true;
 		//m_animator.ResetTrigger("Jump");
 		//m_animator.ResetTrigger("Attack");
+	}
+
+	private void Update()
+	{
+		// InputSystem変更予定検索キーワード　"ちんちん"
+		// 後にInputSystemに変更
+		if (m_isShooting && Input.GetKeyDown(KeyCode.Escape))
+		{
+			m_isShooting = false;
+			ChangeCamera.MoveingCamera();
+		}
 	}
 
 	private void FixedUpdate()
