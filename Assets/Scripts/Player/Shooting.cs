@@ -6,7 +6,7 @@ public class Shooting : MonoBehaviour
 	{
 		CorkGun,	// コルク銃
 		AirGun,     // エアガン
-		RichGun,    // リッチガン
+		RichAirGun, // 高級エアガン
 		Pistol,		// ピストル
 
 		Length,     // 銃の種類の数

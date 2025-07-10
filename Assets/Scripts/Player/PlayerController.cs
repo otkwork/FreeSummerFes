@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
 	float m_speed = 5f;
-	
+	[SerializeField] GunSelect m_gunSelect; // 銃の選択UI
+
 	Vector3 m_direction;
 	Vector3 m_velocity;
 	GameObject m_model;
@@ -44,14 +45,14 @@ public class PlayerController : MonoBehaviour
 	{
 		m_playerInput.actions["Move"].performed += OnMove;
 		m_playerInput.actions["Move"].canceled += OnMoveCancel;
-		m_playerInput.actions["Direct"].performed += OnDirect;
+		m_playerInput.actions["Decision"].performed += OnDecision;
 	}
 
 	private void OnDisable()
 	{
 		m_playerInput.actions["Move"].performed -= OnMove;
 		m_playerInput.actions["Move"].canceled -= OnMoveCancel;
-		m_playerInput.actions["Direct"].performed -= OnDirect;
+		m_playerInput.actions["Decision"].performed -= OnDecision;
 	}
 
 	private void OnMove(InputAction.CallbackContext callback)
@@ -67,13 +68,14 @@ public class PlayerController : MonoBehaviour
 		m_animator.SetBool("Move", false);
 	}
 
-	void OnDirect(InputAction.CallbackContext callback)
+	void OnDecision(InputAction.CallbackContext callback)
 	{
 		// 屋台を見ているとき
 		if (PlayerRay.lookStall && !m_isShooting)
 		{
 			m_isShooting = true;
 			ChangeCamera.ShootingCamera();
+			m_gunSelect.StartSetUi(); // 銃の選択UIを表示
 		}
 	}
 
@@ -84,17 +86,6 @@ public class PlayerController : MonoBehaviour
 		m_canDirection = true;
 		//m_animator.ResetTrigger("Jump");
 		//m_animator.ResetTrigger("Attack");
-	}
-
-	private void Update()
-	{
-		// InputSystem変更予定検索キーワード　"ちんちん"
-		// 後にInputSystemに変更
-		if (m_isShooting && Input.GetKeyDown(KeyCode.Escape))
-		{
-			m_isShooting = false;
-			ChangeCamera.MoveingCamera();
-		}
 	}
 
 	private void FixedUpdate()
@@ -143,5 +134,6 @@ public class PlayerController : MonoBehaviour
 	public static bool isShooting
 	{
 		get { return m_isShooting; }
+		set { m_isShooting = value; }
 	}
 }
