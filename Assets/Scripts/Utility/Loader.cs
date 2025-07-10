@@ -1,28 +1,18 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public static class Loader
 {
 	// 指定したアドレスのSpriteをロードして表示する
-	public static Sprite LoadSpriteAsync(string address)
+	public static AsyncOperationHandle<Sprite> LoadSpriteAsync(string address)
 	{
-		Sprite sprite = null;
-		Addressables.LoadAssetAsync<Sprite>(address).Completed += op =>
-		{
-			sprite = op.Result;
-			Addressables.Release(op);
-		};
-		return sprite;
+		return Addressables.LoadAssetAsync<Sprite>(address);
 	}
 
-	public static GameObject LoadGameObjectAsync(string address)
+	public static AsyncOperationHandle<GameObject> LoadGameObjectAsync(string address)
 	{
-		GameObject obj = null;
-		Addressables.LoadAssetAsync<GameObject>(address).Completed += op =>
-		{
-			obj = op.Result;
-			Addressables.Release(op);
-		};
-		return obj;
+		
+		return Addressables.LoadAssetAsync<GameObject>(address);
 	}
 }

@@ -16,7 +16,32 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d863329e36447bd42a56966b4c360cd9
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: f1545ef6676f64b4c99ea060e30431b6
+    m_Address: CorkGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: feeea4c14ccf8804388d90fd168556bc
+    m_Address: Pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6591bea9a677fe14baa6d598e825d9e4
+    m_Address: AirGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de9dffe5915bf8f47bcbf893a2b2cc3a
+    m_Address: RichAirGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b55eec509bf9f9747a6317d516c96c23
+    m_Address: a
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 340785c0957c5e346a2d2dd48cd6cbf9, type: 2}
   m_SchemaSet:

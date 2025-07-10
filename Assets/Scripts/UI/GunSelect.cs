@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,38 +6,42 @@ using UnityEngine.UI;
 
 public class GunSelect : MonoBehaviour
 {
+	[SerializeField] private ExcelData m_excelData;
 	[SerializeField] private PlayerInput m_playerInput;
 	[SerializeField] private GameObject[] m_gunUi;
 	[SerializeField] private Transform[] m_setTransform;
 	[SerializeField] private float m_moveSpeed = 1f; // UI移動速度
 
 	private const int CenterIndex = 2; // 中央の銃のインデックス（0から始まる）
+	private const int MaxIndex = 4;
 
+	private GunUi[] m_uiScript;
+	private Image[] m_backImage;
 	private Image[] m_gunImage;
 	private Image[] m_setImage;
 	private bool m_isMoveCorsor = false;
 	private bool m_moveRight = false;
-	private bool m_moveLeft = false;
 	private float m_elapsedTime = 0;
-	//private int m_selectIndex = 0; // 選択中の銃をのインデックス
+	private static int m_selectIndex; // 選択中の銃をのインデックス
 
 	private void Awake()
 	{
-		m_gunImage = new Image[m_gunUi.Length];
+		m_setImage = new Image[m_setTransform.Length];
+		m_uiScript = new GunUi[m_gunUi.Length];
 		for (int i = 0; i < m_gunUi.Length; ++i)
 		{
-			m_gunImage[i] = m_gunUi[i].GetComponent<Image>();
-			m_gunUi[i].SetActive(false); // 初期状態では非表示
-		}
-
-		m_setImage = new Image[m_setTransform.Length];
-		for (int i = 0; i < m_setTransform.Length; ++i)
-		{
+			m_uiScript[i] = m_gunUi[i].GetComponent<GunUi>();
 			m_setImage[i] = m_setTransform[i].GetComponent<Image>();
+			m_gunUi[i].SetActive(false); // 初期状態では非表示
 		}
 	}
 
-	private void OnEnable()
+    private void Start()
+    {
+        m_selectIndex = CenterIndex;
+    }
+
+    private void OnEnable()
 	{
 		m_playerInput.actions["CursorMove"].performed += OnMove;
 		m_playerInput.actions["Decision"].performed += OnDecision;
@@ -60,11 +65,15 @@ public class GunSelect : MonoBehaviour
 		if (value.x < -0.5f) // 右に移動
 		{
 			m_moveRight = true;
+			m_selectIndex--;
 		}
 		else if (value.x > 0.5f) // 左に移動
 		{
-			m_moveLeft = true;
+			m_selectIndex++;
 		}
+
+		m_selectIndex = SetNum(m_selectIndex, MaxIndex);
+		Debug.Log(m_selectIndex);
 	}
 
 	void OnDecision(InputAction.CallbackContext callback)
@@ -91,13 +100,13 @@ public class GunSelect : MonoBehaviour
 		for (int i = 0; i < m_gunUi.Length; ++i)
 		{
 			m_gunUi[i].SetActive(true); // UIを表示
-			m_gunUi[i].transform.position = m_setTransform[i].position; // 初期位置に設定
-			m_gunUi[i].transform.localScale = m_setTransform[i].localScale; // 初期サイズに設定
-			m_gunImage[i].color = m_setImage[i].color; // 初期透明度に設定
+			m_uiScript[i].SetStyle(m_setTransform[i].position, m_setTransform[i].localScale, m_setImage[i].color);
+
+            m_uiScript[i].SetData(m_excelData.Gun[SetNum(i, m_excelData.Gun.Count)]);
 		}
 	}
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
 		if (!PlayerController.isShooting)
 		{
@@ -108,7 +117,6 @@ public class GunSelect : MonoBehaviour
 			}
 
 			m_isMoveCorsor = false; 
-			m_moveLeft = false; 
 			m_moveRight = false; 
 			return;
 		}
@@ -118,32 +126,49 @@ public class GunSelect : MonoBehaviour
 		m_elapsedTime += Time.deltaTime * m_moveSpeed;
 		for (int i = 0; i < m_gunUi.Length; ++i)
 		{
+			Vector3 pos;
+			Vector3 scale;
+			Color color;
+
+			int index = i >= MaxIndex ? 0 : i + 1;
 			if (m_moveRight)
 			{
-				m_gunUi[i].transform.position = 
-					Vector3.Lerp(m_setTransform[i].position, m_setTransform[i + 1].position, m_elapsedTime); // 右に移動
-				m_gunUi[i].transform.localScale = 
-					Vector3.Lerp(m_setTransform[i].localScale, m_setTransform[i + 1].localScale, m_elapsedTime); // サイズを変更
-				m_gunImage[i].color = 
-					Color.Lerp(m_setImage[i].color, m_setImage[i + 1].color, m_elapsedTime); // 透明度を変更
-			}
-			else if (m_moveLeft)
+				pos = Vector3.Lerp(m_setTransform[i].position, m_setTransform[index].position, m_elapsedTime); // 右に移動
+				scale = Vector3.Lerp(m_setTransform[i].localScale, m_setTransform[index].localScale, m_elapsedTime); // サイズを変更
+				color = Color.Lerp(m_setImage[i].color, m_setImage[index].color, m_elapsedTime); // 透明度を変更
+            }
+			else
 			{
-				m_gunUi[i].transform.position =
-					Vector3.Lerp(m_setTransform[i + 1].position, m_setTransform[i].position, m_elapsedTime); // 左に移動
-				m_gunUi[i].transform.localScale =
-					Vector3.Lerp(m_setTransform[i + 1].localScale, m_setTransform[i].localScale, m_elapsedTime); // サイズを変更
-				m_gunImage[i].color =
-					Color.Lerp(m_setImage[i + 1].color, m_setImage[i].color, m_elapsedTime); // 透明度を変更
+				pos = Vector3.Lerp(m_setTransform[index].position, m_setTransform[i].position, m_elapsedTime); // 左に移動
+				scale = Vector3.Lerp(m_setTransform[index].localScale, m_setTransform[i].localScale, m_elapsedTime); // サイズを変更
+				color = Color.Lerp(m_setImage[index].color, m_setImage[i].color, m_elapsedTime); // 透明度を変更				
 			}
+
+			m_uiScript[i].SetStyle(pos, scale, color);
 		}
 
 		if (m_elapsedTime >= 1f)
 		{
+			for (int i = 0; i < m_uiScript.Length; ++i)
+			{
+				int index = m_selectIndex - (CenterIndex - i);
+                m_uiScript[i].SetData(m_excelData.Gun[SetNum(index, m_excelData.Gun.Count)]);
+            }
+
 			m_isMoveCorsor = false;
 			m_moveRight = false;
-			m_moveLeft = false;
 			m_elapsedTime = 0; // タイマーをリセット
 		}
 	}
+
+	// 値が0以下または最大数以上の場合一周する
+	private int SetNum(int value, int max)
+	{
+        int num = value < 0 ? 
+			max - 1 :
+			value > max - 1 ?
+			0 : value;
+
+		return num;
+    }
 }
