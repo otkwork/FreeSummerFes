@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 public class GunUi : MonoBehaviour
@@ -16,9 +17,17 @@ public class GunUi : MonoBehaviour
     public void SetData(GunDataEntity data)
     {
         m_gunData = data;
-        Loader.LoadSpriteAsync(m_gunData.gunName).Completed += op =>
-        m_gunImage.sprite = op.Result;
-    }
+		Loader.LoadSpriteAsync(m_gunData.gunName).Completed += op =>
+		{
+			m_gunImage.sprite = op.Result;
+			Addressables.Release(op);
+		};
+
+		/*
+		
+		};
+		*/
+	}
 
     public void SetStyle(Vector3 pos, Vector3 scale, Color color)
     {
@@ -27,4 +36,9 @@ public class GunUi : MonoBehaviour
         m_image.color = color;
         m_gunImage.color = color;
     }
+
+	public void Decision()
+	{
+		Shooting.SetData(m_gunData);
+	}
 }

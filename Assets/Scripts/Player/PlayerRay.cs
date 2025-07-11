@@ -1,10 +1,10 @@
+using Unity.VisualScripting;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class PlayerRay : MonoBehaviour
 {
 	[SerializeField] private float rayDistance = 10f; // ƒŒƒC‚Ì”ò‚Î‚·‹——£
-
 	private static bool m_lookStall;
 
 	void Start()

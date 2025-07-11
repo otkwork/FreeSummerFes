@@ -12,7 +12,6 @@ public static class Loader
 
 	public static AsyncOperationHandle<GameObject> LoadGameObjectAsync(string address)
 	{
-		
 		return Addressables.LoadAssetAsync<GameObject>(address);
 	}
 }
