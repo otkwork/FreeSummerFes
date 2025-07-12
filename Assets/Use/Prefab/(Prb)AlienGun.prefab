@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 2105291855336690465}
   - component: {fileID: 7817408739135356708}
   - component: {fileID: 8957473058765563775}
-  - component: {fileID: 4296100982837621531}
   m_Layer: 0
   m_Name: alien_gun_body
   m_TagString: Untagged
@@ -122,27 +121,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4296100982837621531
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3816112248168768545}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.116888136, y: 0.3545719, z: 0.5800038}
-  m_Center: {x: -0.0010335445, y: 0.17728595, z: 0.20732501}
 --- !u!1 &3898898196686081166
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8594639858318514157}
   - {fileID: 7585674201357354927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,7 +165,6 @@ GameObject:
   - component: {fileID: 6615689654430009650}
   - component: {fileID: 236706194148720167}
   - component: {fileID: 3972333446215676003}
-  - component: {fileID: 9166248827653604076}
   m_Layer: 0
   m_Name: alien_gun_trigger
   m_TagString: Untagged
@@ -259,24 +237,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9166248827653604076
-BoxCollider:
+--- !u!1 &7087114683525298304
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392974134016957467}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0033336133, y: 0.05630707, z: 0.03195525}
-  m_Center: {x: -0.054609075, y: -0.074656025, z: -0.042505812}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8594639858318514157}
+  m_Layer: 0
+  m_Name: BulletPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8594639858318514157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087114683525298304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2758, z: 0.4903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4418167488904353332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -20,8 +20,8 @@ public class ShootingObject : MonoBehaviour
 		// 地面についたら
 		if (other.transform.CompareTag("Ground"))
 		{
-			// そのオブジェクトをインベントリに追加する
-			Inventry.AddObject(m_objectName);
+            // そのオブジェクトをインベントリに追加する
+            Inventory.AddObject(m_objectName);
 
 			Destroy(gameObject);
 		}

@@ -27,11 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b55eec509bf9f9747a6317d516c96c23
-    m_Address: RichAirGun
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6591bea9a677fe14baa6d598e825d9e4
     m_Address: AirGun
     m_ReadOnly: 0
@@ -44,6 +39,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c8c69d0862b0434daa12bb2d1600670
     m_Address: ToyGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de9dffe5915bf8f47bcbf893a2b2cc3a
+    m_Address: RichAirGun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

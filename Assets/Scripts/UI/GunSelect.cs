@@ -6,26 +6,32 @@ using UnityEngine.UI;
 public class GunSelect : MonoBehaviour
 {
 	[SerializeField] private ExcelData m_excelData;
+	[SerializeField] private GameObject m_imageParent;
+	[SerializeField] private GameObject m_setPosParent;
 	[SerializeField] private PlayerInput m_playerInput;
-	[SerializeField] private List<GameObject> m_gunUi;
-	[SerializeField] private Transform[] m_setTransform;
 	[SerializeField] private float m_moveSpeed = 1f; // UI移動速度
 
 	private const int CenterIndex = 2; // 中央のUIのインデックス
 
-	private static bool m_isSelectTime = true;
+	private List<GameObject> m_gunUi;
+	private Transform[] m_setTransform;
 	private GunUi[] m_uiScript;
 	private Image[] m_setImage;
+	private static bool m_isSelectTime = true;
 	private bool m_isMoveCorsor = false;
 	private bool m_moveRight = false;
 	private float m_elapsedTime = 0;
 
 	private void Awake()
 	{
-		m_uiScript = new GunUi[m_gunUi.Count];
-		m_setImage = new Image[m_setTransform.Length];
-		for (int i = 0; i < m_gunUi.Count; ++i)
+		m_gunUi = new List<GameObject>();
+		m_setTransform = new Transform[m_excelData.Gun.Count];
+		m_uiScript = new GunUi[m_excelData.Gun.Count];
+		m_setImage = new Image[m_excelData.Gun.Count];
+		for (int i = 0; i < m_excelData.Gun.Count; ++i)
 		{
+			m_gunUi.Add(m_imageParent.transform.GetChild(i).gameObject);
+			m_setTransform[i] = m_setPosParent.transform.GetChild(i);
 			m_uiScript[i] = m_gunUi[i].GetComponent<GunUi>();
 			m_setImage[i] = m_setTransform[i].GetComponent<Image>();
 			m_gunUi[i].SetActive(false); // 初期状態では非表示

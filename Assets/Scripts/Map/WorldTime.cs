@@ -65,7 +65,7 @@ public class WorldTime : MonoBehaviour
 	void LateUpdate()
 	{
 		float sunAngle = 360 - (m_hourTime + m_minuteTime / 60f) * 15; // 1ŽžŠÔ‚ ‚½‚è15“x
-		m_sun.transform.rotation = Quaternion.Euler(sunAngle + StartSunRot, 0, 0);
+		m_sun.transform.rotation = Quaternion.Euler(sunAngle + StartSunRot, -45, 0);
 
 		if		(m_hourTime >= 0 && 
 				 m_hourTime < ChangeTime[(int)TimeOfDay.Morning])
