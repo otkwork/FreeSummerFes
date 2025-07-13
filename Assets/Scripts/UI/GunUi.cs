@@ -22,11 +22,6 @@ public class GunUi : MonoBehaviour
 			m_gunImage.sprite = op.Result;
 			Addressables.Release(op);
 		};
-
-		/*
-		
-		};
-		*/
 	}
 
     public void SetStyle(Vector3 pos, Vector3 scale, Color color)

@@ -1,8 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
+	[SerializeField] private PlayerInput m_playerInput;
 	[SerializeField] private GameObject m_bullet; // ’eŠÛ‚ÌƒvƒŒƒnƒu
 	private static GunDataEntity m_gunData;
 	private static GameObject m_this;
@@ -16,6 +19,26 @@ public class Shooting : MonoBehaviour
         m_this = gameObject;
 	}
 
+    private void OnEnable()
+    {
+        m_playerInput.actions["Decision"].performed += OnDecision;
+    }
+
+    private void OnDisable()
+    {
+        m_playerInput.actions["Decision"].performed -= OnDecision;
+    }
+
+	private void OnDecision(InputAction.CallbackContext callback)
+	{
+        if (m_isShooting)
+        {
+            GameObject bullet = Instantiate(m_bullet, m_model.transform.GetChild(0).transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody>().AddForce(m_model.transform.forward * m_bulletPower); // ’eŠÛ‚É—Í‚ğ‰Á‚¦‚é
+            Destroy(bullet, 2.0f); // 2•bŒã‚É’eŠÛ‚ğíœ
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,27 +48,24 @@ public class Shooting : MonoBehaviour
 			Destroy(m_model);
 			return;
 		}
-
-		// InputSystem•ÏX—\’èŒŸõƒL[ƒ[ƒh@"‚¿‚ñ‚¿‚ñ"
-		// Œã‚ÉInputSystem‚É•ÏX
-		if (PlayerController.isShooting && Input.GetMouseButtonDown(0))
-		{
-			GameObject bullet = Instantiate(m_bullet, m_model.transform.GetChild(0).transform.position, transform.rotation);
-			bullet.GetComponent<Rigidbody>().AddForce(m_model.transform.forward * m_bulletPower); // ’eŠÛ‚É—Í‚ğ‰Á‚¦‚é
-			Destroy(bullet, 2.0f); // 2•bŒã‚É’eŠÛ‚ğíœ
-		}
     }
 
 	public static void SetData(GunDataEntity data)
 	{
 		m_gunData = data;
-		m_isShooting = true; // e‚ğŒ‚‚Âó‘Ô‚É‚·‚é
 
 		Loader.LoadGameObjectAsync(m_gunData.gunName).Completed += op =>
 		{
 			m_model = Instantiate(op.Result, m_this.transform.position, m_this.transform.rotation, m_this.transform); // e‚Ìƒ‚ƒfƒ‹‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
 			Addressables.Release(op);
+			m_isShooting = true; // e‚ğŒ‚‚Âó‘Ô‚É‚·‚é
 		};
 		m_bulletPower = m_gunData.bulletPower; // ’eŠÛ‚ÌˆĞ—Í‚ğİ’è
+	}
+
+	public static bool isShooting
+	{
+		get { return m_isShooting; }
+		set { m_isShooting = value; }
 	}
 }

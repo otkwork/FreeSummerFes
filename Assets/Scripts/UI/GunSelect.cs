@@ -88,6 +88,7 @@ public class GunSelect : MonoBehaviour
 		if (PlayerController.isShooting)
 		{
 			PlayerController.isShooting = false;
+			Shooting.isShooting = false;
 			ChangeCamera.MoveingCamera();
 		}
 	}

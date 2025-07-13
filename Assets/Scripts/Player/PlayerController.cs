@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TreeEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	float m_speed = 5f;
 	[SerializeField] GunSelect m_gunSelect; // 銃の選択UI
+	[SerializeField] GameObject m_inventory;	// インベントリUI
 
 	Vector3 m_direction;
 	Vector3 m_velocity;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
 		m_playerInput.actions["Move"].performed += OnMove;
 		m_playerInput.actions["Move"].canceled += OnMoveCancel;
 		m_playerInput.actions["Decision"].performed += OnDecision;
+		m_playerInput.actions["Pause"].performed += OnPause;
 	}
 
 	private void OnDisable()
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
 		m_playerInput.actions["Move"].performed -= OnMove;
 		m_playerInput.actions["Move"].canceled -= OnMoveCancel;
 		m_playerInput.actions["Decision"].performed -= OnDecision;
+		m_playerInput.actions["Pause"].performed -= OnPause;
 	}
 
 	private void OnMove(InputAction.CallbackContext callback)
@@ -79,8 +83,15 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// アニメーションから呼ばれる
-	public void ResetTrigger()
+    void OnPause(InputAction.CallbackContext callback)
+    {
+		m_inventory.SetActive(!m_inventory.activeSelf);
+		Cursor.visible = m_inventory.activeSelf;
+		Cursor.lockState = m_inventory.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    // アニメーションから呼ばれる
+    public void ResetTrigger()
 	{
 		m_canMove = true;
 		m_canDirection = true;
@@ -102,6 +113,7 @@ public class PlayerController : MonoBehaviour
 			m_model.SetActive(true);
 		}
 
+
 		// カメラの正面ベクトルを作成
 		Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
@@ -121,15 +133,15 @@ public class PlayerController : MonoBehaviour
 			m_velocity *= m_speed * Time.deltaTime;
 		}
 
-		// 重力をかける
-		m_velocity.y += Physics.gravity.y * Time.deltaTime;
+        // 重力をかける
+        m_velocity.y += Physics.gravity.y * Time.deltaTime;
 
 		// 移動
 		if (m_canMove)
-		{
-			m_charaCon.Move(m_velocity);
-		}
-	}
+        {
+            m_charaCon.Move(m_velocity);
+        }
+    }
 
 	public static bool isShooting
 	{

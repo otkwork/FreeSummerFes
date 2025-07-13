@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class PlayerRay : MonoBehaviour
@@ -33,6 +31,12 @@ public class PlayerRay : MonoBehaviour
 			else
 			{
 				m_lookStall = false;
+			}
+
+			// InputSystem変更予定場所キーワード　ちんちん
+			if (Input.GetKeyDown(KeyCode.Space) && hit.transform.TryGetComponent(out WarpPoint warpPoint))
+			{
+				warpPoint.PlayerWarp(gameObject);
 			}
 		}
 		else
