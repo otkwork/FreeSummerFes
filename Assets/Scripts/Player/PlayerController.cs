@@ -81,6 +81,24 @@ public class PlayerController : MonoBehaviour
 			ChangeCamera.ShootingCamera();
 			m_gunSelect.StartSetUi(); // e‚Ì‘I‘ðUI‚ð•\Ž¦
 		}
+		else if (PlayerRay.hitShrine && !m_isShooting)
+		{
+			Fade.FadeOut(1.0f, () =>
+			{
+				PlayerRay.hitShrine = false;
+				SystemScene.ChangeScene("Shrine", "Shop");
+				Fade.FadeIn(1.0f);
+			});
+		}
+		else if (PlayerRay.hitShop && !m_isShooting)
+		{
+			Fade.FadeOut(1.0f, () =>
+			{
+				PlayerRay.hitShop = false;
+				SystemScene.ChangeScene("Shop", "Shrine");
+				Fade.FadeIn(1.0f);
+			});
+		}
 	}
 
     void OnPause(InputAction.CallbackContext callback)

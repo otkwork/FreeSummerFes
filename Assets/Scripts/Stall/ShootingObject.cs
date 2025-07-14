@@ -3,17 +3,6 @@ using UnityEngine;
 public class ShootingObject : MonoBehaviour
 {
 	[SerializeField] string m_objectName;
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	public void OnCollisionEnter(Collision other)
 	{
@@ -25,5 +14,10 @@ public class ShootingObject : MonoBehaviour
 
 			Destroy(gameObject);
 		}
+	}
+
+	public void SetName(string name)
+	{
+		m_objectName = name;
 	}
 }

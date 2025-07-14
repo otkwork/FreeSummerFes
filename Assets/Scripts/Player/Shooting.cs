@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
 	[SerializeField] private PlayerInput m_playerInput;
 	[SerializeField] private GameObject m_bullet; // 弾丸のプレハブ
 	private static GunDataEntity m_gunData;
-	private static GameObject m_this;
+	private static Transform m_transform;
 	private static GameObject m_model; // 銃のモデル
 	private static int m_bulletPower; // 弾丸の威力
 	private static bool m_isShooting; // 銃を撃っているかどうか
@@ -16,7 +16,7 @@ public class Shooting : MonoBehaviour
 	// Start is called before the first frame update
 	void Awake()
     {
-        m_this = gameObject;
+		m_transform = transform;
 	}
 
     private void OnEnable()
@@ -56,7 +56,7 @@ public class Shooting : MonoBehaviour
 
 		Loader.LoadGameObjectAsync(m_gunData.gunName).Completed += op =>
 		{
-			m_model = Instantiate(op.Result, m_this.transform.position, m_this.transform.rotation, m_this.transform); // 銃のモデルをインスタンス化
+			m_model = Instantiate(op.Result, m_transform.position, m_transform.rotation, m_transform); // 銃のモデルをインスタンス化
 			Addressables.Release(op);
 			m_isShooting = true; // 銃を撃つ状態にする
 		};

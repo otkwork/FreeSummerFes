@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: GunModel
+  m_EditorClassIdentifier: 
+  m_GroupName: GunModel
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6029051a5d9f9d14a9f60f4080193e70
+  m_SerializeEntries:
+  - m_GUID: d44793864eeeec74d8adce5e5679ffb6
+    m_Address: Pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dee9cc417e829554ea3ebc7aa373557d
+    m_Address: CorkGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41236ddb97b001d499cadd3503c086dc
+    m_Address: ToyGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 436d84b39ebbb99449cf0c0ed23b24a5
+    m_Address: AirGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc0ea5d78f11ef940953748346a38f89
+    m_Address: RichAirGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 288081e4f166aab4ca167f5b10f3c626
+    m_Address: WaterGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 340785c0957c5e346a2d2dd48cd6cbf9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: be6a67be71b7ef44d92b682d8f4db1c1, type: 2}
+    - {fileID: 11400000, guid: 5179dbcebbf77f3418a6fad21b1028b2, type: 2}

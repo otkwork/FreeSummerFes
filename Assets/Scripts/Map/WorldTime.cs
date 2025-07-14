@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -20,8 +21,9 @@ public class WorldTime : MonoBehaviour
 	[SerializeField] private int m_timeScale = 1; // ゲーム内の時間の進行速度（1秒で1時間進む）
 
 	private float m_time;		// リアルの経過時間
-	private int m_hourTime;		// ゲーム内の時間（時間）
-	private int m_minuteTime;   // ゲーム内の時間（分）
+	private static int m_hourTime;		// ゲーム内の時間（時間）
+	private static int m_minuteTime;	// ゲーム内の時間（分）
+	private static (int, int) m_worldDay = (8, 1); // ゲーム内の日付
 
 	private readonly float[] ChangeTime =
 	{
@@ -30,6 +32,7 @@ public class WorldTime : MonoBehaviour
 		18f, // 昼から夕方への時間帯
 		24f, // 夕方から夜への時間帯
 	};
+	private readonly (int, int) GameOverDay = (8, 31); // ゲームオーバーの日付（8月31日）
 	private const int StartSunRot = -90;
 
 	void Start()
@@ -54,12 +57,17 @@ public class WorldTime : MonoBehaviour
 				if (m_hourTime >= 24)
 				{
 					m_hourTime = 0;
+					m_worldDay.Item2++; // 日付を進める
+					if (m_worldDay == GameOverDay)
+					{
+						Debug.Log("Game Over! You have reached the end of the game.");
+					}
 				}
 			}
 			m_time -= 1f;
 		}
 
-		m_textTime.text = $"{m_hourTime:D2}:{m_minuteTime:D2}"; // 時間を表示
+		m_textTime.text = $"{m_worldDay.Item1}/{m_worldDay.Item2}\n{m_hourTime:D2}:{m_minuteTime:D2}"; // 時間を表示
 	}
 
 	void LateUpdate()
@@ -116,5 +124,15 @@ public class WorldTime : MonoBehaviour
 				(m_hourTime - setZero) / (ChangeTime[(int)TimeOfDay.Night] - setZero)
 			); 
 		}
+	}
+
+	public static (int, int) GetWorldTime()
+	{
+		return (m_hourTime, m_minuteTime);
+	}
+
+	public static (int, int) GetWorldDay()
+	{
+		return m_worldDay;
 	}
 }
