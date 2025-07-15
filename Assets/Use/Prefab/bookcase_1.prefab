@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07982088ae215c41b7fabcad2d44efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_excelData: {fileID: 11400000, guid: 01db52cf7042ec341976a8ab658e0456, type: 2}
   m_objectsPos:
   - {fileID: 4235720358782313729}
   - {fileID: 7050222456911570706}

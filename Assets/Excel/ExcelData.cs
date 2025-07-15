@@ -5,4 +5,5 @@ using UnityEngine;
 public class ExcelData : ScriptableObject
 {
 	public List<GunDataEntity> Gun;
+	public List<ShootingObjectEntity> Object;
 }

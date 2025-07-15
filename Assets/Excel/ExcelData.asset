@@ -43,3 +43,9 @@ MonoBehaviour:
     bulletPower: 3000
     displayName: "\u62F3\u9283"
     bulletAmount: 6
+  Object:
+  - id: 0
+    objectName: Cube
+    displayName: "\u7BB1"
+    maxPrice: 1000
+    minPrice: 100

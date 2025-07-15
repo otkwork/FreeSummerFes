@@ -7660,8 +7660,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359001451}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05787335, y: 0.7047345, z: -0.05787335, w: 0.7047345}
-  m_LocalPosition: {x: -13.660004, y: 0.43700242, z: 1.130003}
+  m_LocalRotation: {x: 0.026172178, y: 0.7066223, z: -0.026172178, w: 0.7066223}
+  m_LocalPosition: {x: 17.01, y: 0.43700004, z: 1.1299992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38513,59 +38513,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 272400280}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2037597134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2037597135}
-  - component: {fileID: 2037597136}
-  m_Layer: 0
-  m_Name: WarpShopArea
-  m_TagString: Shrine
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2037597135
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037597134}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 962324262497661773}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2037597136
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037597134}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!4 &2038667364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1508454761942618995, guid: 21aff866aeba52a4c80fbae6bf6eb8af,
@@ -41393,11 +41340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2756079005627871004, guid: 5f93edb9dbc057c4ab792ae45c266069,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2037597135}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f93edb9dbc057c4ab792ae45c266069, type: 3}
 --- !u!4 &962324262497661773 stripped

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShootingObject : MonoBehaviour
 {
-	[SerializeField] string m_objectName;
+	string m_objectName;
 
 	public void OnCollisionEnter(Collision other)
 	{

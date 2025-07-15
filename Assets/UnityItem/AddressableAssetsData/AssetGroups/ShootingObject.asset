@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 47850e90ce56aa340878c250306ccbaa
   m_SerializeEntries:
-  - m_GUID: bdef53ec9f0d5b54c86bfb80b6414db2
-    m_Address: Fire Alarm
+  - m_GUID: ce6c5b69a9f591d4c99112df1edf0051
+    m_Address: Cube
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
