@@ -6,4 +6,5 @@ public class GunDataEntity
 	public int bulletPower;			// ˆĞ—Í
 	public string displayName;      // •\¦–¼
 	public int bulletAmount;		// ’e–ò”
+	public string bulletName;		// ƒ‚ƒfƒ‹‚Æ‡‚í‚¹‚é‚½‚ß‚Ì–¼‘O
 }

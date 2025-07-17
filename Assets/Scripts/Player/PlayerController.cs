@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +6,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	float m_speed = 5f;
 	[SerializeField] GunSelect m_gunSelect; // 銃の選択UI
-	[SerializeField] GameObject m_inventory;	// インベントリUI
+	[SerializeField] GameObject m_smartPhone;	// インベントリUI
 
 	Vector3 m_direction;
 	Vector3 m_velocity;
@@ -85,9 +81,9 @@ public class PlayerController : MonoBehaviour
 
     void OnPause(InputAction.CallbackContext callback)
     {
-		m_inventory.SetActive(!m_inventory.activeSelf);
-		Cursor.visible = m_inventory.activeSelf;
-		Cursor.lockState = m_inventory.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+		m_smartPhone.SetActive(!m_smartPhone.activeSelf);
+		Cursor.visible = m_smartPhone.activeSelf;
+		Cursor.lockState = m_smartPhone.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     // アニメーションから呼ばれる

@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Shrine
-  - Shop
+  - PistolBullet
   layers:
   - Default
   - TransparentFX

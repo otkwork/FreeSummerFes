@@ -4,19 +4,17 @@ using UnityEngine;
 public class BuyStand : MonoBehaviour
 {
 	[SerializeField] private GameObject m_priceTag;
+	private static ShootingObjectEntity m_data;
 
 	private const int NewObjectSetTime = 3;
+	private readonly (float, float) Probability = (1f, 101f);	// 確率を出すときの1～100までの値
 
 	private (int, int) m_prevBuyDay = (0, 0);
-	private int m_maxPrice;
-	private int m_minPrice;
 	private int m_price;
-	private bool m_isSetObject;
+	private static bool m_isSetObject;
 
 	private void Start()
 	{
-		m_maxPrice = 0;
-		m_minPrice = 0;
 		m_isSetObject = false;
 	}
 
@@ -29,15 +27,21 @@ public class BuyStand : MonoBehaviour
 		{
 			m_prevBuyDay = WorldTime.GetWorldDay();
 
-
-			// 売却成功した場合
-			BuyManager.AddSales(m_price);
+			// m_priceの商品が売れる確率
+			float probability = (m_price - m_data.minPrice) / (m_data.maxPrice - m_data.minPrice);
+			if (Random.Range(Probability.Item1, Probability.Item2) <= 100 * probability)
+			{
+				// 売却成功した場合
+				BuyManager.AddSales(m_price);
+			}
 		}
 	}
 
-	public void SetData()
+	public static void SetData(ShootingObjectEntity data)
 	{
+		if (data == null) return;
 		m_isSetObject = true;
+		m_data = data;
 	}
 
 	public void SetPrice(int value)

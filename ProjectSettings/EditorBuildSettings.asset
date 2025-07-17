@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/System.unity
     guid: ca0568abf8d2da6439e2a84744cc3a81
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: bf008f3db5cb0ea4db7bd58bd5f008ee
+  - enabled: 1
     path: Assets/Scenes/WorldTime.unity
     guid: 3aa0508d4c62d174cbf079c918ec53c0
   - enabled: 1
@@ -18,8 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Shrine.unity
     guid: 1537089ec65226649ab23a7144291f52
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: d82ea5f5c878aff4b9ead33b81529e33
+    path: Assets/Scenes/GameOver.unity
+    guid: 5280e7170f8563a4c841354376834a69
+  - enabled: 1
+    path: Assets/Scenes/Clear.unity
+    guid: b112db3ffb072f9439c9ac4b2546e276
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cedd33b7a7c17dd4c82ffda8fa0153eb,
       type: 2}

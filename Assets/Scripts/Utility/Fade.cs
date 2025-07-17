@@ -6,13 +6,13 @@ using System;
 
 public class Fade : MonoBehaviour
 {
-	private static Color m_fromColor;
-	private static Color m_toColor;
-	private static float m_fadeTime;
-	private static float m_fadeDeltaTime;
-	private static Action m_callback;
+	private Color m_fromColor;
+	private Color m_toColor;
+	private float m_fadeTime;
+	private float m_fadeDeltaTime;
+	private Action m_callback;
 
-	private static Image m_image;
+	private Image m_image;
 
 	public bool IsFade
 	{
@@ -53,17 +53,17 @@ public class Fade : MonoBehaviour
 		}
 	}
 
-	public static void FadeOut(float time, Action callback = null)
+	public void FadeOut(float time, Action callback = null)
 	{
 		FadeStart(time, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), callback);
 	}
 
-	public static void FadeIn(float time, Action callback = null)
+	public void FadeIn(float time, Action callback = null)
 	{
 		FadeStart(time, new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), callback);
 	}
 
-	public static void FadeStart(float time, Color from, Color to, Action callback = null)
+	public void FadeStart(float time, Color from, Color to, Action callback = null)
 	{
 		m_fadeTime = time;
 		m_fadeDeltaTime = 0.0f;

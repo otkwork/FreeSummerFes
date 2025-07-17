@@ -18,31 +18,37 @@ MonoBehaviour:
     bulletPower: 1000
     displayName: "\u304A\u3082\u3061\u3083\u306E\u9283"
     bulletAmount: 3
+    bulletName: ToyGunBullet
   - id: 1
     gunName: WaterGun
     bulletPower: 800
     displayName: "\u6C34\u9244\u7832"
     bulletAmount: 30
+    bulletName: WaterGunBullet
   - id: 2
     gunName: CorkGun
     bulletPower: 1500
     displayName: "\u30B3\u30EB\u30AF\u9283"
     bulletAmount: 5
+    bulletName: CorkGunBullet
   - id: 3
     gunName: AirGun
     bulletPower: 1500
     displayName: "\u30A8\u30A2\u30AC\u30F3"
     bulletAmount: 20
+    bulletName: AirGunBullet
   - id: 4
     gunName: RichAirGun
     bulletPower: 2000
     displayName: "\u9AD8\u7D1A\u30A8\u30A2\u30AC\u30F3"
     bulletAmount: 10
+    bulletName: RichAirGunBullet
   - id: 5
     gunName: Pistol
-    bulletPower: 3000
+    bulletPower: 30000
     displayName: "\u62F3\u9283"
     bulletAmount: 6
+    bulletName: PistolBullet
   Object:
   - id: 0
     objectName: Cube
