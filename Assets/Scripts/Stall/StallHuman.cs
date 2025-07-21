@@ -20,7 +20,7 @@ public class StallHuman : MonoBehaviour
 		{
 			m_collider.enabled = false;
 			m_animator.SetTrigger("Die");
-			SceneFade.FadeOut(10.0f, () =>
+			SceneFade.FadeOut(3.0f, () =>
 			{
 				SystemScene.AllClearScene();
 				SystemScene.Load("GameOver");
