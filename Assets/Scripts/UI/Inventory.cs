@@ -7,22 +7,24 @@ public class Inventory : MonoBehaviour
 {
 	[SerializeField] Transform m_content;
 	[SerializeField] GameObject m_button;
-	private static List<string> m_shootingObjects = new List<string>();
-	private static bool m_addObject = false;
+	private static List<ShootingObjectEntity> m_shootingObjects = new List<ShootingObjectEntity>();
+	private static int m_addObject = 0;
 
-    public static void AddObject(string objectName)
+    public static void AddObject(ShootingObjectEntity data)
 	{
-		m_shootingObjects.Add(objectName);
-		m_addObject = true;
+		m_shootingObjects.Add(data);
+		m_addObject++;
 	}
 
     private void Update()
     {
-        if (m_addObject)
-		{
-			m_addObject = false;
-			GameObject obj = Instantiate(m_button, m_content);
-			obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_shootingObjects[m_shootingObjects.Count - 1];
-		}
-    }
+		// 同時に複数個オブジェクトが落下した時のためにint
+		if (m_addObject == 0) return;	
+
+		// 生成したオブジェクトに渡すデータはリストの最後尾から追加した数の分引く
+		GameObject obj = Instantiate(m_button, m_content);
+		obj.GetComponent<InventoryButton>().objectData = m_shootingObjects[m_shootingObjects.Count - m_addObject];
+		obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_shootingObjects[m_shootingObjects.Count - 1].displayName;
+		m_addObject--;
+	}
 }

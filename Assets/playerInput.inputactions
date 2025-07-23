@@ -53,17 +53,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "99f2c4cb-42fe-4b12-8cbd-eefc30cf999a",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "WASD",
                     "id": "d2101372-d368-4da4-8413-38a7f288f47d",
                     "path": "2DVector",
@@ -175,17 +164,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b89e116c-0181-4653-a4c7-763f37c95edb",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ccab2c0e-a6ee-4365-8fb2-143679b1d552",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
@@ -208,30 +186,8 @@
                 },
                 {
                     "name": "",
-                    "id": "7763e982-d51e-410d-84cc-e420d7a65f0f",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Decision",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4e38a556-7b41-4038-a5c7-346104bee16a",
                     "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "598db8d5-200f-437f-90ab-f1a39b761c55",
-                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -375,45 +331,12 @@
                 },
                 {
                     "name": "",
-                    "id": "34ae695a-f129-410f-aeca-a8fa5d3c77f9",
-                    "path": "<Gamepad>/dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CursorMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2bfc2fa2-b9f3-43e6-89bc-c99202da96f6",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Decision",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3af4e334-fff1-41c7-a4e7-61acfbdf9a88",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Decision",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c3b337b-0c12-4c11-a21d-d349969916af",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

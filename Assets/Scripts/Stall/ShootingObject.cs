@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShootingObject : MonoBehaviour
 {
-	string m_objectName;
+	ShootingObjectEntity m_data;
 
 	public void OnCollisionEnter(Collision other)
 	{
@@ -10,14 +10,14 @@ public class ShootingObject : MonoBehaviour
 		if (other.transform.CompareTag("Ground"))
 		{
             // そのオブジェクトをインベントリに追加する
-            Inventory.AddObject(m_objectName);
+            Inventory.AddObject(m_data);
 
 			Destroy(gameObject);
 		}
 	}
 
-	public void SetName(string name)
+	public void SetData(ShootingObjectEntity data)
 	{
-		m_objectName = name;
+		m_data = data;
 	}
 }

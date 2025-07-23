@@ -45,7 +45,7 @@ public class ShootingShelf : MonoBehaviour
 		{
 			GameObject obj =Instantiate(op.Result, m_objectsPos[index].position, m_objectsPos[index].rotation, m_objectsParent);
 			obj.GetComponent<Rigidbody>().mass = index <= 10 ? 30 : index <= 12 ? 50 : 100;
-			obj.GetComponent<ShootingObject>().SetName(m_excelData.Object[objectIndex].displayName);
+			obj.GetComponent<ShootingObject>().SetData(m_excelData.Object[objectIndex]);
 			obj.transform.localScale = Vector3.Scale(obj.transform.localScale, m_objectsPos[index].localScale);
 			m_objects[index] = obj; // 生成したオブジェクトを記録
 		};

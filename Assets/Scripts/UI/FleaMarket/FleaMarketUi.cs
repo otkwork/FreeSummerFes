@@ -10,15 +10,19 @@ public class FleaMarketUi : MonoBehaviour
 
     private int m_price = 0;
 
-    public void SetData(Sprite objSprite, string objName)
+    public void SetData(string objName)
     {
-        m_objectImage.sprite = objSprite;
+		Loader.LoadSpriteAsync(objName).Completed += op =>
+		{
+			m_objectImage.sprite = op.Result;
+		};
         m_objectName.text = objName;
         m_objectPrice.text = m_price.ToString();
     }
 
     public int objectPrice
     {
-        get { return m_price; }
+		get { return m_price; }
+		set { m_price = value; }
     }
 }
