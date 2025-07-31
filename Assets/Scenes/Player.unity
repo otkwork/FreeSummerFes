@@ -1090,7 +1090,9 @@ MonoBehaviour:
     type: 3}
   m_marketParent: {fileID: 1415450333}
   m_setPrice: {fileID: 1191794834}
-  m_inventory: {fileID: 770986476}
+  m_diplayInventory: {fileID: 770986476}
+  m_inventory: {fileID: 1819606352}
+  m_selectObjectText: {fileID: 693129218}
 --- !u!114 &267350692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,7 +1321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0069819107, y: 0.0000000010948087, z: -7.644043e-12, w: 0.9999756}
+  m_LocalRotation: {x: 0.0069819107, y: 6.8901683e-17, z: -4.8107723e-19, w: 0.9999756}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1475,7 +1477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381955225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0069819153, y: 5.75575e-10, z: -4.0187137e-12, w: 0.9999756}
+  m_LocalRotation: {x: 0.0069819144, y: 6.890874e-17, z: -1.4914249e-18, w: 0.9999756}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2782,7 +2784,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u51FA\u54C1\u7269\u306E\u9078\u629E"
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a80c805a73d6df47a04121cc01eaeba, type: 2}
   m_sharedMaterial: {fileID: 1834237319105593240, guid: 4a80c805a73d6df47a04121cc01eaeba,
@@ -4462,7 +4466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349475230}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.011160251, y: -0.0000000016318049, z: -1.8212487e-11, w: 0.9999377}
+  m_LocalRotation: {x: -0.01116025, y: 2.4703548e-10, z: 2.7571498e-12, w: 0.9999377}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4662,7 +4666,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -80, y: 0}
-  m_SizeDelta: {x: 160, y: 0}
+  m_SizeDelta: {x: 160, y: 15}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1415450334
 CanvasRenderer:
@@ -4923,7 +4927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1640759515
 RectTransform:
   m_ObjectHideFlags: 0

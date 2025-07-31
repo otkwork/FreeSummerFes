@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class ObjectSelect : MonoBehaviour
 	[SerializeField] GameObject m_marketUi;
 	[SerializeField] Transform m_marketParent;
 	[SerializeField] private TMP_InputField m_setPrice;
-    [SerializeField] private GameObject m_inventory;
+    [SerializeField] private GameObject m_diplayInventory;
+    [SerializeField] private Inventory m_inventory;
+	[SerializeField] private TextMeshProUGUI m_selectObjectText;
 	private static ShootingObjectEntity m_data;
     
     private int m_price = 0;
@@ -15,13 +18,13 @@ public class ObjectSelect : MonoBehaviour
 
     public void SetPrice()
     {
-        m_price = int.Parse(m_setPrice.text);
+        if (!string.IsNullOrEmpty(m_setPrice.text)) m_price = int.Parse(m_setPrice.text);
 	}
 
 	public void OnClickObjectSelect()
     {
         m_selectObject = true;
-        m_inventory.SetActive(true);
+        m_diplayInventory.SetActive(true);
     }
 
     public void OnClickListing()
@@ -33,10 +36,17 @@ public class ObjectSelect : MonoBehaviour
 		GameObject obj = Instantiate(m_marketUi, m_marketParent);
 		obj.TryGetComponent(out FleaMarketUi market);
 		market.objectPrice = m_price;
-		market.SetData(m_data.objectName);
-		FleaMarket.AddData(m_data, obj);
+		market.SetData(m_data);
+		FleaMarket.AddData(m_data, m_price, obj);
+        m_inventory.RemoveObject(m_data);
 		gameObject.SetActive(false);
 		m_data = null;
+    }
+
+    private void Update()
+    {
+        m_selectObjectText.text = m_data != null ? 
+            m_data.displayName : "èoïiï®ÇÃëIë";
     }
 
     public static bool selectObject

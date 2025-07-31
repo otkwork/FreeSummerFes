@@ -27,4 +27,11 @@ public class Inventory : MonoBehaviour
 		obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_shootingObjects[m_shootingObjects.Count - 1].displayName;
 		m_addObject--;
 	}
+
+	public void RemoveObject(ShootingObjectEntity data)
+	{
+		int objectIndex = m_shootingObjects.IndexOf(data);
+		m_shootingObjects.RemoveAt(objectIndex);
+		Destroy(m_content.GetChild(objectIndex).gameObject);
+	}
 }
