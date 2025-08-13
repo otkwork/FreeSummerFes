@@ -73,19 +73,19 @@ public class GunSelect : MonoBehaviour
 		if (!PlayerController.isShooting) return;
 		if (!m_isSelectTime) return;
 
+		// 銃を選択
+		if (!m_uiScript[CenterIndex].Decision()) return;
+		m_isSelectTime = false;
+
 		for (int i = 0; i < m_gunUi.Count; ++i)
 		{
 			m_gunUi[i].SetActive(false); // 全てのUIを非表示
 		}
-
-		// 銃を選択
-		m_uiScript[CenterIndex].Decision();
-		m_isSelectTime = false;
 	}
 
 	void OnEscape(InputAction.CallbackContext callback)
 	{
-		if (PlayerController.isShooting)
+		if (PlayerController.isShooting && Shooting.endShooting)
 		{
 			PlayerController.isShooting = false;
 			Shooting.isShooting = false;

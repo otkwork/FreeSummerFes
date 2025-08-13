@@ -19,39 +19,292 @@ MonoBehaviour:
     displayName: "\u304A\u3082\u3061\u3083\u306E\u9283"
     bulletAmount: 3
     bulletName: ToyGunBullet
+    price: 100
   - id: 1
     gunName: WaterGun
     bulletPower: 800
     displayName: "\u6C34\u9244\u7832"
     bulletAmount: 30
     bulletName: WaterGunBullet
+    price: 500
   - id: 2
     gunName: CorkGun
     bulletPower: 1500
     displayName: "\u30B3\u30EB\u30AF\u9283"
     bulletAmount: 5
     bulletName: CorkGunBullet
+    price: 500
   - id: 3
     gunName: AirGun
     bulletPower: 1500
     displayName: "\u30A8\u30A2\u30AC\u30F3"
     bulletAmount: 20
     bulletName: AirGunBullet
+    price: 1000
   - id: 4
     gunName: RichAirGun
     bulletPower: 2000
     displayName: "\u9AD8\u7D1A\u30A8\u30A2\u30AC\u30F3"
     bulletAmount: 10
     bulletName: RichAirGunBullet
+    price: 1500
   - id: 5
     gunName: Pistol
     bulletPower: 30000
     displayName: "\u62F3\u9283"
     bulletAmount: 6
     bulletName: PistolBullet
+    price: 5000
   Object:
   - id: 0
     objectName: Cube
     displayName: "\u7BB1"
     maxPrice: 1000
     minPrice: 100
+    weight: 30
+  - id: 1
+    objectName: SnowmanA
+    displayName: "\u96EA\u3060\u308B\u307EA"
+    maxPrice: 2000
+    minPrice: 500
+    weight: 100
+  - id: 2
+    objectName: SnowmanB
+    displayName: "\u96EA\u3060\u308B\u307EB"
+    maxPrice: 2500
+    minPrice: 500
+    weight: 100
+  - id: 3
+    objectName: SnowmanC
+    displayName: "\u96EA\u3060\u308B\u307EC"
+    maxPrice: 3000
+    minPrice: 500
+    weight: 100
+  - id: 4
+    objectName: Globe
+    displayName: "\u5730\u7403\u5100"
+    maxPrice: 2500
+    minPrice: 100
+    weight: 100
+  - id: 5
+    objectName: PaintA
+    displayName: "\u7D75\u753B \u201C\u5C0F\u5C4B\u201D"
+    maxPrice: 3000
+    minPrice: 500
+    weight: 40
+  - id: 6
+    objectName: PaintB
+    displayName: "\u7D75\u753B \u201C\u5E7D\u5DBA\u201D"
+    maxPrice: 2000
+    minPrice: 200
+    weight: 40
+  - id: 7
+    objectName: PaintC
+    displayName: "\u7D75\u753B \u201C\u6D77\u6688\u201D"
+    maxPrice: 5000
+    minPrice: 1000
+    weight: 40
+  - id: 8
+    objectName: PaintD
+    displayName: "\u7D75\u753B \u201C\u305D\u3089\u201D"
+    maxPrice: 1500
+    minPrice: 100
+    weight: 40
+  - id: 9
+    objectName: PaintE
+    displayName: "\u7D75\u753B \u201C\u7F8A\u201D"
+    maxPrice: 1000
+    minPrice: 100
+    weight: 40
+  - id: 10
+    objectName: PaintF
+    displayName: "\u7D75\u753B \u201C\u5915\u6A39\u8DEF\u201D"
+    maxPrice: 4000
+    minPrice: 300
+    weight: 40
+  - id: 11
+    objectName: PaintG
+    displayName: "\u7D75\u753B \u201C\u78EF\u98A8\u666F\u201D"
+    maxPrice: 3000
+    minPrice: 250
+    weight: 40
+  - id: 12
+    objectName: PaintH
+    displayName: "\u7D75\u753B \u201C\u96EA\u7D0B\u83EF\u201D"
+    maxPrice: 2500
+    minPrice: 200
+    weight: 40
+  - id: 13
+    objectName: PaintI
+    displayName: "\u7D75\u753B \u201C\u98A8\u306E\u305D\u3088\u304E\u201D"
+    maxPrice: 1500
+    minPrice: 500
+    weight: 40
+  - id: 14
+    objectName: PaintJ
+    displayName: "\u7D75\u753B \u201C\u8239\u201D"
+    maxPrice: 1200
+    minPrice: 100
+    weight: 40
+  - id: 15
+    objectName: BishopBlack
+    displayName: "\u30D3\u30B7\u30E7\u30C3\u30D7(\u9ED2)"
+    maxPrice: 900
+    minPrice: 100
+    weight: 30
+  - id: 16
+    objectName: BishopWhite
+    displayName: "\u30D3\u30B7\u30E7\u30C3\u30D7(\u767D)"
+    maxPrice: 900
+    minPrice: 100
+    weight: 30
+  - id: 17
+    objectName: KingBlack
+    displayName: "\u30AD\u30F3\u30B0(\u9ED2)"
+    maxPrice: 1200
+    minPrice: 100
+    weight: 30
+  - id: 18
+    objectName: KingWhite
+    displayName: "\u30AD\u30F3\u30B0(\u767D)"
+    maxPrice: 1200
+    minPrice: 100
+    weight: 30
+  - id: 19
+    objectName: KnightBlack
+    displayName: "\u30CA\u30A4\u30C8(\u9ED2)"
+    maxPrice: 900
+    minPrice: 100
+    weight: 30
+  - id: 20
+    objectName: KnightWhite
+    displayName: "\u30CA\u30A4\u30C8(\u767D)"
+    maxPrice: 900
+    minPrice: 100
+    weight: 30
+  - id: 21
+    objectName: PawnBlack
+    displayName: "\u30DD\u30FC\u30F3(\u9ED2)"
+    maxPrice: 300
+    minPrice: 100
+    weight: 30
+  - id: 22
+    objectName: PawnWhite
+    displayName: "\u30DD\u30FC\u30F3(\u767D)"
+    maxPrice: 300
+    minPrice: 100
+    weight: 30
+  - id: 23
+    objectName: QueenBlack
+    displayName: "\u30AF\u30A4\u30FC\u30F3(\u9ED2)"
+    maxPrice: 2700
+    minPrice: 100
+    weight: 30
+  - id: 24
+    objectName: QueenWhite
+    displayName: "\u30AF\u30A4\u30FC\u30F3(\u767D)"
+    maxPrice: 2700
+    minPrice: 100
+    weight: 30
+  - id: 25
+    objectName: RookBlack
+    displayName: "\u30EB\u30FC\u30AF(\u9ED2)"
+    maxPrice: 1500
+    minPrice: 100
+    weight: 30
+  - id: 26
+    objectName: RookWhite
+    displayName: "\u30EB\u30FC\u30AF(\u767D)"
+    maxPrice: 1500
+    minPrice: 100
+    weight: 30
+  - id: 27
+    objectName: ball1
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73891"
+    maxPrice: 110
+    minPrice: 10
+    weight: 50
+  - id: 28
+    objectName: ball2
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73892"
+    maxPrice: 120
+    minPrice: 10
+    weight: 50
+  - id: 29
+    objectName: ball3
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73893"
+    maxPrice: 130
+    minPrice: 10
+    weight: 50
+  - id: 30
+    objectName: ball4
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73894"
+    maxPrice: 140
+    minPrice: 10
+    weight: 50
+  - id: 31
+    objectName: ball5
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73895"
+    maxPrice: 150
+    minPrice: 10
+    weight: 50
+  - id: 32
+    objectName: ball6
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73896"
+    maxPrice: 160
+    minPrice: 10
+    weight: 50
+  - id: 33
+    objectName: ball7
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73897"
+    maxPrice: 170
+    minPrice: 10
+    weight: 50
+  - id: 34
+    objectName: ball8
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73898"
+    maxPrice: 180
+    minPrice: 10
+    weight: 50
+  - id: 35
+    objectName: ball9
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u73899"
+    maxPrice: 900
+    minPrice: 10
+    weight: 50
+  - id: 36
+    objectName: ball10
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738910"
+    maxPrice: 200
+    minPrice: 10
+    weight: 50
+  - id: 37
+    objectName: ball11
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738911"
+    maxPrice: 210
+    minPrice: 10
+    weight: 50
+  - id: 38
+    objectName: ball12
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738912"
+    maxPrice: 220
+    minPrice: 10
+    weight: 50
+  - id: 39
+    objectName: ball13
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738913"
+    maxPrice: 230
+    minPrice: 10
+    weight: 50
+  - id: 40
+    objectName: ball14
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738914"
+    maxPrice: 240
+    minPrice: 10
+    weight: 50
+  - id: 41
+    objectName: ball15
+    displayName: "\u30D3\u30EA\u30E4\u30FC\u30C9\u306E\u738915"
+    maxPrice: 250
+    minPrice: 10
+    weight: 50

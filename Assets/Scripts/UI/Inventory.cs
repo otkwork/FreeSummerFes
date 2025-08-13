@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
 		// 生成したオブジェクトに渡すデータはリストの最後尾から追加した数の分引く
 		GameObject obj = Instantiate(m_button, m_content);
 		obj.GetComponent<InventoryButton>().objectData = m_shootingObjects[m_shootingObjects.Count - m_addObject];
-		obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_shootingObjects[m_shootingObjects.Count - 1].displayName;
+		obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_shootingObjects[m_shootingObjects.Count - m_addObject].displayName;
 		m_addObject--;
 	}
 

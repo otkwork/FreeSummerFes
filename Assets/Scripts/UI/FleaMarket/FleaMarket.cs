@@ -39,7 +39,8 @@ public class FleaMarket : MonoBehaviour
 				// 最高額よりも設定値段の方が小さいときは売れる
                 if (maxPrice > buyData.Item2)
                 {
-                    // 所持金にbuyDataを加算
+					// 所持金にbuyDataを加算
+					Money.AddMoney(buyData.Item2);
 					// リスト二つから削除(実態も削除)
 					removeList.Add(objectIndex);
                 }

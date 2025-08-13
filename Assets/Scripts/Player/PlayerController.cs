@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	bool m_canMove;
 	bool m_canDirection;
     static bool m_isShooting;
+	static bool m_openPhone;
 
 	private void Awake()
 	{
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
 	void OnDecision(InputAction.CallbackContext callback)
 	{
 		// âÆë‰Çå©ÇƒÇ¢ÇÈÇ∆Ç´
-		if (PlayerRay.lookStall && !m_isShooting)
+		if (PlayerRay.lookStall && !m_isShooting && !isOpenPhone)
 		{
 			m_isShooting = true;
 			ChangeCamera.ShootingCamera();
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     void OnPause(InputAction.CallbackContext callback)
     {
+		if (m_isShooting) return;
 		m_smartPhone.SetActive(!m_smartPhone.activeSelf);
 		Cursor.visible = m_smartPhone.activeSelf;
 		Cursor.lockState = m_smartPhone.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
@@ -97,6 +99,8 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		m_openPhone = m_smartPhone.activeSelf;
+
 		// éÀìIíÜÇÕà⁄ìÆÇêßå¿
 		if (m_isShooting)
 		{
@@ -143,5 +147,10 @@ public class PlayerController : MonoBehaviour
 	{
 		get { return m_isShooting; }
 		set { m_isShooting = value; }
+	}
+
+	public static bool isOpenPhone
+	{
+		get { return m_openPhone; }
 	}
 }

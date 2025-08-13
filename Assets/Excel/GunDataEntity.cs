@@ -6,5 +6,6 @@ public class GunDataEntity
 	public int bulletPower;			// 威力
 	public string displayName;      // 表示名
 	public int bulletAmount;		// 弾薬数
-	public string bulletName;		// モデルと合わせるための名前
+	public string bulletName;       // モデルと合わせるための名前
+	public int price;				// 値段
 }

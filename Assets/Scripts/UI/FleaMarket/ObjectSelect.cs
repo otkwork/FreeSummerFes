@@ -18,7 +18,13 @@ public class ObjectSelect : MonoBehaviour
 
     public void SetPrice()
     {
-        if (!string.IsNullOrEmpty(m_setPrice.text)) m_price = int.Parse(m_setPrice.text);
+        // ê›íËÇ≥ÇπÇƒÇ¢Ç»Ç¢Ç‹ÇΩ0Ç™ì¸ÇÍÇÁÇÍÇΩÇ∆Ç´
+        if (string.IsNullOrEmpty(m_setPrice.text) || int.Parse(m_setPrice.text) == 0)
+        {
+            m_setPrice.text = null;
+            return;
+        }
+        m_price = int.Parse(m_setPrice.text);
 	}
 
 	public void OnClickObjectSelect()
@@ -41,6 +47,8 @@ public class ObjectSelect : MonoBehaviour
         m_inventory.RemoveObject(m_data);
 		gameObject.SetActive(false);
 		m_data = null;
+        m_price = 0;
+        m_setPrice.text = null;
     }
 
     private void Update()

@@ -32,8 +32,14 @@ public class GunUi : MonoBehaviour
         m_gunImage.color = color;
     }
 
-	public void Decision()
+	public bool Decision()
 	{
-		Shooting.SetData(m_gunData);
+        // Š‹à‚Åe‚ğ”ƒ‚¦‚é
+        if (Money.UseMoney(m_gunData.price))
+        {
+		    Shooting.SetData(m_gunData);
+            return true;
+        }
+        return false;
 	}
 }

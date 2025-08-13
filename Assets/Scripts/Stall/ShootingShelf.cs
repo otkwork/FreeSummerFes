@@ -1,6 +1,7 @@
 using System.Transactions;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class ShootingShelf : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ShootingShelf : MonoBehaviour
 	private static GameObject[] m_objects;
 	private (int, int) m_prevChangeDay = (0, 0);
 
-	private const int NewObjectSetTime = 3;
+	private const int NewObjectSetTime = 0;
 
 	private void Awake()
 	{
@@ -31,7 +32,7 @@ public class ShootingShelf : MonoBehaviour
 				if (m_objects[i] == null)
 				{
 					int objectIndex = Random.Range(0, m_excelData.Object.Count - 1);
-					SetObject(i, objectIndex);
+                    SetObject(i, objectIndex);
 				}
 			}
 		}
@@ -44,10 +45,12 @@ public class ShootingShelf : MonoBehaviour
 		Loader.LoadGameObjectAsync(m_excelData.Object[objectIndex].objectName).Completed += op =>
 		{
 			GameObject obj =Instantiate(op.Result, m_objectsPos[index].position, m_objectsPos[index].rotation, m_objectsParent);
-			obj.GetComponent<Rigidbody>().mass = index <= 10 ? 30 : index <= 12 ? 50 : 100;
-			obj.GetComponent<ShootingObject>().SetData(m_excelData.Object[objectIndex]);
+			obj.GetComponent<Rigidbody>().mass = m_excelData.Object[objectIndex].weight;
+            obj.GetComponent<ShootingObject>().SetData(m_excelData.Object[objectIndex]);
 			obj.transform.localScale = Vector3.Scale(obj.transform.localScale, m_objectsPos[index].localScale);
+			obj.transform.rotation = op.Result.transform.rotation;
 			m_objects[index] = obj; // 生成したオブジェクトを記録
-		};
+            Addressables.Release(op);
+        };
 	}
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 public class FleaMarketUi : MonoBehaviour
@@ -15,7 +16,8 @@ public class FleaMarketUi : MonoBehaviour
 		Loader.LoadSpriteAsync(data.objectName).Completed += op =>
 		{
 			m_objectImage.sprite = op.Result;
-		};
+            Addressables.Release(op);
+        };
         m_objectName.text = data.displayName;
         m_objectPrice.text = m_price.ToString();
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InventoryButton : MonoBehaviour
 {
-	private static ShootingObjectEntity m_objectData;
+	private ShootingObjectEntity m_objectData;
 
 	public ShootingObjectEntity objectData
 	{
@@ -16,6 +16,7 @@ public class InventoryButton : MonoBehaviour
 		if (ObjectSelect.selectObject)
 		{
 			ObjectSelect.SetData(m_objectData);
+			Debug.Log(m_objectData.displayName);
 
 			// content->viewport->DislayInventory
 			transform.parent.parent.parent.gameObject.SetActive(false);
