@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	PlayerInput m_playerInput;
 	CharacterController m_charaCon;
 
+	bool m_clear;
 	bool m_canMove;
 	bool m_canDirection;
     static bool m_isShooting;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	{
 		m_direction = new Vector3(0, 0, 0);
 		m_velocity = new Vector3(0, 0, 0);
+		m_clear = false;
 		m_canMove = true;
 		m_canDirection = true;
 		m_isShooting = false;
@@ -77,6 +79,21 @@ public class PlayerController : MonoBehaviour
 			m_isShooting = true;
 			ChangeCamera.ShootingCamera();
 			m_gunSelect.StartSetUi(); // e‚Ì‘I‘ðUI‚ð•\Ž¦
+		}
+
+		// æÎ‘K” ‚ðŒ©‚Ä‚¢‚é‚Æ‚«
+		if (PlayerRay.lookMoneyBox && !m_clear)
+		{
+			if (Money.ClearMoney())
+			{
+				m_clear = true;
+				SceneFade.FadeOut(1.0f, () =>
+				{
+                    SystemScene.AllClearScene();
+                    SystemScene.Load("Clear");
+                    SceneFade.FadeIn(1.0f);
+				});
+			}
 		}
 	}
 

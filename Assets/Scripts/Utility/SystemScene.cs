@@ -5,7 +5,7 @@ public class SystemScene : MonoBehaviour
 {
 	private void Awake()
 	{
-		// SceneManager.LoadScene("Title", LoadSceneMode.Additive);
+        Load("Title");
 	}
 
 	public static void Load(string sceneName)

@@ -15,8 +15,9 @@ public class WorldTime : MonoBehaviour
 
 	[SerializeField] private Light m_sun; // 太陽のライト
 	[SerializeField] private TextMeshProUGUI m_textTime;
-	[SerializeField] private int m_timeScale = 1; // ゲーム内の時間の進行速度（1秒で1時間進む）
+	[SerializeField] private int m_timeScale = 1; // ゲーム内の時間の進行速度一秒間に進行するリアルの分
 
+	private bool m_nextDayTime = false;
 	private float m_time;		// リアルの経過時間
 	private static int m_hourTime;		// ゲーム内の時間（時間）
 	private static int m_minuteTime;	// ゲーム内の時間（分）
@@ -42,6 +43,7 @@ public class WorldTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetKeyDown(KeyCode.Return)) NextDay();
 		m_time += Time.deltaTime * m_timeScale;
 
 		if (m_time >= 1f) // 1秒経過ごとに時間を更新
@@ -55,7 +57,7 @@ public class WorldTime : MonoBehaviour
 				{
 					m_hourTime = 0;
 					m_worldDay.Item2++; // 日付を進める
-					if (m_worldDay == GameOverDay)
+					if (m_worldDay.Item2 >= GameOverDay.Item2)
 					{
 						Debug.Log("Game Over! You have reached the end of the game.");
 					}
@@ -132,4 +134,19 @@ public class WorldTime : MonoBehaviour
 	{
 		return m_worldDay;
 	}
+
+	private void NextDay()
+	{
+		// フェード中ならreturn
+		if (m_nextDayTime) return;
+
+		m_nextDayTime = true;
+		SceneFade.FadeOut(1.0f, () =>
+        {
+			m_worldDay.Item2++;
+            m_hourTime = 0;
+            m_minuteTime = 0;
+            SceneFade.FadeIn(1.0f, () => m_nextDayTime = false);
+        });
+    }
 }

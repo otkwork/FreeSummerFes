@@ -91,61 +91,61 @@ MonoBehaviour:
     displayName: "\u7D75\u753B \u201C\u5C0F\u5C4B\u201D"
     maxPrice: 3000
     minPrice: 500
-    weight: 40
+    weight: 120
   - id: 6
     objectName: PaintB
     displayName: "\u7D75\u753B \u201C\u5E7D\u5DBA\u201D"
     maxPrice: 2000
     minPrice: 200
-    weight: 40
+    weight: 120
   - id: 7
     objectName: PaintC
     displayName: "\u7D75\u753B \u201C\u6D77\u6688\u201D"
     maxPrice: 5000
     minPrice: 1000
-    weight: 40
+    weight: 120
   - id: 8
     objectName: PaintD
     displayName: "\u7D75\u753B \u201C\u305D\u3089\u201D"
     maxPrice: 1500
     minPrice: 100
-    weight: 40
+    weight: 120
   - id: 9
     objectName: PaintE
     displayName: "\u7D75\u753B \u201C\u7F8A\u201D"
     maxPrice: 1000
     minPrice: 100
-    weight: 40
+    weight: 120
   - id: 10
     objectName: PaintF
     displayName: "\u7D75\u753B \u201C\u5915\u6A39\u8DEF\u201D"
     maxPrice: 4000
     minPrice: 300
-    weight: 40
+    weight: 120
   - id: 11
     objectName: PaintG
     displayName: "\u7D75\u753B \u201C\u78EF\u98A8\u666F\u201D"
     maxPrice: 3000
     minPrice: 250
-    weight: 40
+    weight: 120
   - id: 12
     objectName: PaintH
     displayName: "\u7D75\u753B \u201C\u96EA\u7D0B\u83EF\u201D"
     maxPrice: 2500
     minPrice: 200
-    weight: 40
+    weight: 120
   - id: 13
     objectName: PaintI
     displayName: "\u7D75\u753B \u201C\u98A8\u306E\u305D\u3088\u304E\u201D"
     maxPrice: 1500
     minPrice: 500
-    weight: 40
+    weight: 120
   - id: 14
     objectName: PaintJ
     displayName: "\u7D75\u753B \u201C\u8239\u201D"
     maxPrice: 1200
     minPrice: 100
-    weight: 40
+    weight: 120
   - id: 15
     objectName: BishopBlack
     displayName: "\u30D3\u30B7\u30E7\u30C3\u30D7(\u9ED2)"

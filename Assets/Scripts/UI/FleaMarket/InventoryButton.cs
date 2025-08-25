@@ -16,7 +16,7 @@ public class InventoryButton : MonoBehaviour
 		if (ObjectSelect.selectObject)
 		{
 			ObjectSelect.SetData(m_objectData);
-			Debug.Log(m_objectData.displayName);
+			ObjectSelect.selectObject = false;
 
 			// content->viewport->DislayInventory
 			transform.parent.parent.parent.gameObject.SetActive(false);

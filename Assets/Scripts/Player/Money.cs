@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Money : MonoBehaviour
@@ -7,6 +6,8 @@ public class Money : MonoBehaviour
     [SerializeField] private int m_startMoney;
     private TextMeshProUGUI m_moneyText;
     private static int m_money;
+
+    private static readonly int ClearValue = 100000;
 
     private void Start()
     {
@@ -37,5 +38,10 @@ public class Money : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public static bool ClearMoney()
+    {
+        return m_money >= ClearValue;
     }
 }
