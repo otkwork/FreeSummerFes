@@ -43,7 +43,7 @@ public class WorldTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Return)) NextDay();
+		if (Input.GetKeyDown(KeyCode.N)) NextDay();
 		m_time += Time.deltaTime * m_timeScale;
 
 		if (m_time >= 1f) // 1•bŒo‰ß‚²‚Æ‚ÉŽžŠÔ‚ðXV
