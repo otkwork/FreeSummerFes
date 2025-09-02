@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: bf008f3db5cb0ea4db7bd58bd5f008ee
   - enabled: 1
+    path: Assets/Scenes/Story.unity
+    guid: d832112b1e35dd148b0570eb647fda9c
+  - enabled: 1
     path: Assets/Scenes/WorldTime.unity
     guid: 3aa0508d4c62d174cbf079c918ec53c0
   - enabled: 1
