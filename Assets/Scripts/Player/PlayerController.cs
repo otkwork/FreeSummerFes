@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -86,6 +87,12 @@ public class PlayerController : MonoBehaviour
 		{
 			if (Money.ClearMoney())
 			{
+				Loader.LoadAudioClipAsync("Money").Completed += op =>
+				{
+					SoundEffect.Play2D(op.Result);
+					Addressables.Release(op);
+				};
+
 				m_clear = true;
 				SceneFade.FadeOut(1.0f, () =>
 				{
@@ -104,15 +111,6 @@ public class PlayerController : MonoBehaviour
 		Cursor.visible = m_smartPhone.activeSelf;
 		Cursor.lockState = m_smartPhone.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
     }
-
-    // アニメーションから呼ばれる
-    public void ResetTrigger()
-	{
-		m_canMove = true;
-		m_canDirection = true;
-		//m_animator.ResetTrigger("Jump");
-		//m_animator.ResetTrigger("Attack");
-	}
 
 	private void FixedUpdate()
 	{

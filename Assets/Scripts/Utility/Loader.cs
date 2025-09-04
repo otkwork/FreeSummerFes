@@ -14,4 +14,9 @@ public static class Loader
 	{
 		return Addressables.LoadAssetAsync<GameObject>(address);
 	}
+
+	public static AsyncOperationHandle<AudioClip> LoadAudioClipAsync(string address)
+	{
+		return Addressables.LoadAssetAsync<AudioClip>(address);
+	}
 }

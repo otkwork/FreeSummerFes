@@ -36,7 +36,7 @@ public class SoundEffect
 
 	static public void StopSe(AudioSource source)
 	{
-		MonoBehaviour.Destroy(source);
+		MonoBehaviour.Destroy(source.gameObject);
     }
 
     static public void OnDestory()

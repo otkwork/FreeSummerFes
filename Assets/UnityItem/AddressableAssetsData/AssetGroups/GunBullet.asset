@@ -27,11 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8d1c0bcb90431004b9841c9e39c21d21
-    m_Address: RichAirGunBullet
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0ef56bd2dc4249b48b2dd16270eeb59c
     m_Address: PistolBullet
     m_ReadOnly: 0

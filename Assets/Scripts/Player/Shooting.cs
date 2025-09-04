@@ -39,6 +39,11 @@ public class Shooting : MonoBehaviour
         {
 			GameObject bullet = Instantiate(m_bullet, m_model.transform.GetChild(0).transform.position, Quaternion.Euler(m_model.transform.rotation.eulerAngles + new Vector3(-90, 0, 0)));
             bullet.GetComponent<Rigidbody>().AddForce(m_model.transform.forward * m_bulletPower); // ’eŠÛ‚É—Í‚ğ‰Á‚¦‚é
+			Loader.LoadAudioClipAsync(m_gunData.bulletName).Completed += op =>
+			{
+				SoundEffect.Play2D(op.Result);
+				Addressables.Release(op);
+			};
             Destroy(bullet, 2.0f); // 2•bŒã‚É’eŠÛ‚ğíœ
 			
 			// ’e‚ğÁ”ï

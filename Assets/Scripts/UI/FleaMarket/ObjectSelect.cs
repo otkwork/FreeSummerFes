@@ -1,6 +1,6 @@
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class ObjectSelect : MonoBehaviour
 {
@@ -49,7 +49,14 @@ public class ObjectSelect : MonoBehaviour
 		m_data = null;
         m_price = 0;
         m_setPrice.text = null;
-    }
+
+		Loader.LoadAudioClipAsync("Sell").Completed += op =>
+		{
+			SoundEffect.Play2D(op.Result);
+			Addressables.Release(op);
+		};
+
+	}
 
     private void Update()
     {

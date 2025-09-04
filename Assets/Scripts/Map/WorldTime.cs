@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class WorldTime : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class WorldTime : MonoBehaviour
 	private static int m_hourTime;		// ゲーム内の時間（時間）
 	private static int m_minuteTime;	// ゲーム内の時間（分）
 	private static (int, int) m_worldDay = (8, 1); // ゲーム内の日付
+	private TimeOfDay m_thisTimeOfDay;
+	private TimeOfDay m_prevTimeOfDay = TimeOfDay.Morning;
+	private AudioSource m_bgm;
+	private bool m_isFade = false;
 
 	private readonly float[] ChangeTime =
 	{
@@ -40,9 +45,19 @@ public class WorldTime : MonoBehaviour
 		m_minuteTime = 0;
 	}
 
-    // Update is called once per frame
     void Update()
     {
+		if (m_thisTimeOfDay != m_prevTimeOfDay)
+		{
+			m_prevTimeOfDay = m_thisTimeOfDay;
+			Loader.LoadAudioClipAsync("BGM_" + m_thisTimeOfDay.ToString()).Completed += op =>
+			{
+				if (m_bgm != null) SoundEffect.StopSe(m_bgm);
+				m_bgm = SoundEffect.Play2D(op.Result, true);
+				Addressables.Release(op);
+			};
+		}
+
 		if (Input.GetKeyDown(KeyCode.N)) NextDay();
 		m_time += Time.deltaTime * m_timeScale;
 
@@ -57,16 +72,18 @@ public class WorldTime : MonoBehaviour
 				{
 					m_hourTime = 0;
 					m_worldDay.Item2++; // 日付を進める
-					if (m_worldDay.Item2 >= GameOverDay.Item2)
-					{
-						Debug.Log("Game Over! You have reached the end of the game.");
-					}
 				}
 			}
 			m_time -= 1f;
 		}
 
 		m_textTime.text = $"{m_worldDay.Item1}/{m_worldDay.Item2}\n{m_hourTime:D2}:{m_minuteTime:D2}"; // 時間を表示
+
+		// 31日を過ぎたらゲームオーバー
+		if (m_worldDay.Item2 > GameOverDay.Item2 && !m_isFade)
+		{
+			Gameover();
+		}
 	}
 
 	void LateUpdate()
@@ -77,6 +94,7 @@ public class WorldTime : MonoBehaviour
 		if		(m_hourTime >= 0 && 
 				 m_hourTime < ChangeTime[(int)TimeOfDay.Morning])
 		{
+			m_thisTimeOfDay = TimeOfDay.Night;
 			// 夜から朝
 			m_sun.color = Color.Lerp
 			(
@@ -90,6 +108,7 @@ public class WorldTime : MonoBehaviour
 		{
 			// Lerpの開始点を0にするための補正
 			float setZero = ChangeTime[(int)TimeOfDay.Morning];
+			m_thisTimeOfDay = TimeOfDay.Morning;
 			// 朝から昼
 			m_sun.color = Color.Lerp
 			(
@@ -103,6 +122,7 @@ public class WorldTime : MonoBehaviour
 		{
 			// Lerpの開始点を0にするための補正
 			float setZero = ChangeTime[(int)TimeOfDay.Noon];
+			m_thisTimeOfDay = TimeOfDay.Noon;
 			// 昼から夕方
 			m_sun.color = Color.Lerp
 			(
@@ -115,6 +135,7 @@ public class WorldTime : MonoBehaviour
 		{
 			// Lerpの開始点を0にするための補正
 			float setZero = ChangeTime[(int)TimeOfDay.Evening];
+			m_thisTimeOfDay = TimeOfDay.Evening;
 			// 夕方から夜
 			m_sun.color = Color.Lerp
 			(
@@ -139,6 +160,13 @@ public class WorldTime : MonoBehaviour
 	{
 		// フェード中ならreturn
 		if (m_nextDayTime) return;
+		// 次の日がゲームオーバーの日付なら
+		if (m_worldDay.Item2 == GameOverDay.Item2)
+		{
+			Gameover();
+
+			return;
+		}
 
 		m_nextDayTime = true;
 		SceneFade.FadeOut(1.0f, () =>
@@ -146,7 +174,26 @@ public class WorldTime : MonoBehaviour
 			m_worldDay.Item2++;
             m_hourTime = 0;
             m_minuteTime = 0;
+			m_nextDayTime = true;
             SceneFade.FadeIn(1.0f, () => m_nextDayTime = false);
         });
     }
+
+	private void Gameover()
+	{
+		m_isFade = true;
+		SceneFade.FadeOut(1.0f, () =>
+		{
+			SoundEffect.StopSe(m_bgm);
+			SystemScene.Load("GameOver");
+			GameoverScene.SetGameOverType(GameoverScene.GameoverType.TimeOver);
+			SystemScene.AllClearScene();
+			SceneFade.FadeIn(1.0f, () => m_nextDayTime = true);
+		});
+	}
+
+	private void OnDisable()
+	{
+		if (m_bgm) SoundEffect.StopSe(m_bgm);
+	}
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public class StallHuman : MonoBehaviour
 {
@@ -20,10 +20,18 @@ public class StallHuman : MonoBehaviour
 		{
 			m_collider.enabled = false;
 			m_animator.SetTrigger("Die");
+			
+			Loader.LoadAudioClipAsync("DamageVoice").Completed += op =>
+			{
+				SoundEffect.Play2D(op.Result);
+				Addressables.Release(op);
+			};
+
 			SceneFade.FadeOut(3.0f, () =>
 			{
 				SystemScene.AllClearScene();
 				SystemScene.Load("GameOver");
+				GameoverScene.SetGameOverType(GameoverScene.GameoverType.Murder);
 				SceneFade.FadeIn(1.0f);
 			});
 		}

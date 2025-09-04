@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sound
+  m_EditorClassIdentifier: 
+  m_GroupName: Sound
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ff942ba80c272f548997dc390e38e5a0
+  m_SerializeEntries:
+  - m_GUID: 14e5af3503d5df642abdaedb005f6ce0
+    m_Address: AirGunBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d2420851e01e004f865668caf510c61
+    m_Address: BGM_Evening
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2bfc2811ef07c44a807bc987c0211ea
+    m_Address: BGM_Night
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dec519beb6d636d499eb795b8b7b9c06
+    m_Address: BGM_Noon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff2b610528a193047a459b3ee01b44a6
+    m_Address: CorkGunBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14cb6afd2d7a42644a2c0e695b4b2c90
+    m_Address: DamageVoice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 682dbedc4d09d0a468ec442f143bdc72
+    m_Address: Money
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a79b4e6047afdfd4c8db7607ff5b00b3
+    m_Address: PistolBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb8a4fd7e6333b140953ec812fdfbcc1
+    m_Address: Sell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca80426a030a8a446a0ec73044352df2
+    m_Address: ToyGunBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e69d6239fe59a8d41b5d5b6783466f99
+    m_Address: WaterGunBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ea2739fad4ebb844b09358e60ec6325
+    m_Address: BGM_Morning
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 340785c0957c5e346a2d2dd48cd6cbf9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9d941aeb907f7ab4aaf6191b85b12baf, type: 2}
+    - {fileID: 11400000, guid: 8e673edd53ed3e748b457077d512779c, type: 2}

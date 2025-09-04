@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 2fce7335a65664d41ad076341e14ce1e
   m_SerializeEntries:
-  - m_GUID: d5847c118c207e641b1fa5f95851bf9f
-    m_Address: Cube
+  - m_GUID: abca08c6749620548a6fa4ccc19a0275
+    m_Address: OwlStatue1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -224,6 +224,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb3f20ca6759c924e9cb1615340ef9a2
     m_Address: ball1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7357016d8791bf43a81ed4948e95aac
+    m_Address: OwlStatue2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9e6c27b5d4f1ff4aab9d5616dbd13ea
+    m_Address: OwlStatue3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cd5b6aec0b5bfb47be5cd3e20be88eb
+    m_Address: OwlStatue4
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
